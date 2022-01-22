@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Expense from "./Expense";
 import { AppCtx } from "../ctx/AppCtx";
-import { TiDelete } from "react-icons/ti";
 
 const ExpenseList = () => {
   const { expenses, dispatch } = useContext(AppCtx);

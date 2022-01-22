@@ -9,7 +9,7 @@ const ExpenseList = () => {
 
   const handleChange = (e) => {
     let result = expenses.filter(({ name }) =>
-      name.toLowerCase().includes(e.target.value)
+      name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFiltered(result);
   };

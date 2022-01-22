@@ -19,11 +19,11 @@ const Expense = ({id, name, cost }) => {
 
 
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center">
+    <li title={name} className="list-group-item d-flex justify-content-between align-items-center">
       {name}
       <div>
-        <span className="badge badge-primary badge-pill mr-3">₩ {cost.brm()}</span>
-        <TiDelete className="del" style={{cursor: "pointer"}} onClick={()=> handleDelete(id)} size="1.5em"></TiDelete>
+        <span title={cost.brm()} className="badge badge-primary badge-pill mr-3">₩ {cost.brm()}</span>
+        <TiDelete title="delete" className="del" style={{cursor: "pointer"}} onClick={()=> handleDelete(id)} size="1.5em"></TiDelete>
       </div>
     </li>
   );

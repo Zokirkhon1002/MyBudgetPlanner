@@ -9,6 +9,8 @@ const Expense = ({id, name, cost }) => {
 
 
   const handleDelete = () => {
+    let confirmation = window.confirm(`Are you really delete the ${name}`);
+    if(!confirmation) return;
     dispatch({
       type: "DELETE",
       payload: id

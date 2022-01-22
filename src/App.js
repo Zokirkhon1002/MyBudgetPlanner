@@ -23,18 +23,19 @@ function App() {
             <SpentSoFar />
           </div>
         </div>
-        <h3 className="mt-3">Expenses</h3>
-        <div className="row mt-3">
-          <div className="col-sm">
-            <ExpenseList />
-          </div>
-        </div>
         <h3 className="mt-3">Add Expense</h3>
         <div className="mt-3">
           <div className="col-sm">
             <AddExpenceForm />
           </div>
         </div>
+        <h3 className="mt-3">Expenses</h3>
+        <div className="row mt-3">
+          <div className="col-sm">
+            <ExpenseList />
+          </div>
+        </div>
+       
       </div>
     </AppProvider>
   );

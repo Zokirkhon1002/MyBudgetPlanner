@@ -1,32 +1,29 @@
-import React, {useState, useContext} from "react";
-import {AppCtx} from "../ctx/AppCtx";
-import {v4} from "uuid"
+import React, { useState, useContext } from "react";
+import { AppCtx } from "../ctx/AppCtx";
+import { v4 } from "uuid";
 
 const AddExpenceForm = () => {
-  const { dispatch} = useContext(AppCtx)
-  const [name, setName] = useState("")
-  const [cost, setCost] = useState("")
+  const { dispatch } = useContext(AppCtx);
+  const [name, setName] = useState("");
+  const [cost, setCost] = useState("");
 
-
-  const onSubmit = (e)=> {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const newItem = {
       id: v4(),
       name: name,
-      cost: Number(cost)
-    }
-
+      cost: parseInt(cost),
+    };
 
     dispatch({
       type: "ADD",
-      payload: newItem
-    })
+      payload: newItem,
+    });
 
-    setName("")
-    setCost("")
-  }
-
+    setName("");
+    setCost("");
+  };
 
   return (
     <form onSubmit={onSubmit}>
@@ -39,24 +36,26 @@ const AddExpenceForm = () => {
             className="form-control"
             id="name"
             value={name}
-            onChange={(e)=> setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="col-sm">
           <label htmlFor="cost">Cost</label>
           <input
             required="required"
-            type="text"
+            type="number"
             className="form-control"
             id="cost"
             value={cost}
-            onChange={(e)=> setCost(e.target.value)}
+            onChange={(e) => setCost(e.target.value)}
           />
         </div>
-        <div className="col-sm">
-          <button type="submit" className="btn btn-primary mt-2">
-            Save
-          </button>
+        <div className="row mt-4">
+          <div className="col-sm">
+            <button type="submit" className="btn btn-primary mt-2">
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </form>

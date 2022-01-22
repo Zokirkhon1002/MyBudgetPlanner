@@ -1,17 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
 import Expense from "./Expense";
 import { AppCtx } from "../ctx/AppCtx";
+import { TiDelete } from "react-icons/ti";
 
 const ExpenseList = () => {
-  const { expenses } = useContext(AppCtx);
+  const { expenses, dispatch } = useContext(AppCtx);
 
   const [filtered, setFiltered] = useState(expenses || []);
 
   const handleChange = (e) => {
     let result = expenses.filter(({ name }) =>
-        name.toLowerCase().includes(e.target.value)
+      name.toLowerCase().includes(e.target.value)
     );
-    setFiltered(result)
+    setFiltered(result);
+  };
+
+  const handleDeleteAll = () => {
+    let confirmation = window.confirm("Do you want to delete All Expenses?");
+    if (!confirmation) return;
+
+    dispatch({
+      type: "DELETE_ALL",
+      payload: [],
+    });
   };
 
   useEffect(() => {
@@ -26,6 +37,20 @@ const ExpenseList = () => {
         placeholder="Type to search in Expenses..."
         onChange={handleChange}
       />
+      {filtered.length?(
+        <div className="row mt-4 text-right">
+          <div className="col-sm">
+            <button
+              title="Delete All"
+              type="submit"
+              className="btn btn-danger"
+              onClick={handleDeleteAll}
+            >
+              Delete All
+            </button>
+          </div>
+        </div>
+      ):null}
 
       <ul className="list-group mt-3 mb-3">
         {filtered.map(({ id, name, cost }) => (

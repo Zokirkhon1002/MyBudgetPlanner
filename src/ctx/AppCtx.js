@@ -17,6 +17,11 @@ const AppReducer = (state, action) => {
             ...state,
             budget: action.payload,
           };
+      case "DELETE_ALL":
+          return {
+            ...state,
+            expenses: action.payload
+          }
     default:
       return state;
   }

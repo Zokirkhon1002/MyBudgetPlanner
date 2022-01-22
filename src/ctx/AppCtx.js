@@ -27,7 +27,7 @@ const initialState = {
   expenses: [
     { id: 123, name: "Olma", cost: 5000 },
     { id: 124, name: "Uzbegim", cost: 20000 },
-    { id: 125, name: "Avtobus bir oy", cost: 35000 },
+    { id: 125, name: "Banan", cost: 5000 },
   ],
 };
 
